@@ -6,10 +6,7 @@ import com.qy105.aaa.model.Member;
 import com.qy105.aaa.service.LoginLogService;
 import com.qy105.aaa.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @author ：小男神
@@ -39,12 +36,25 @@ public class MemberController {
     /**
      * create by: ws
      * description: TODO
+     *          d退出登录方法
+     * create time: 15:23 2020/3/12
+     * * @Param: null
+     * @return
+     */
+    @RequestMapping("/doLoginOut")
+    public Boolean doLoginOut(@RequestParam("token") String token){
+        return memberService.doLoginOut(token);
+    }
+
+    /**
+     * create by: ws
+     * description: TODO
      *          保存登录日志
      * create time: 15:23 2020/3/12
      * * @Param: null
      * @return
      */
-    @PostMapping("saveLog")
+    @PostMapping("/saveLog")
     public boolean saveLog(@RequestBody LoginLog loginLog){
         return loginLogService.addLoginLog(loginLog);
     }

@@ -7,6 +7,7 @@ import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @FeignClient(value = "memberinfo-interface",fallbackFactory = RepastFallBackFactory.class)
 public interface IRepastService {
@@ -20,6 +21,8 @@ public interface IRepastService {
      */
     @RequestMapping("/doLogin")
     Boolean doLogin(@RequestBody Member member);
+    @RequestMapping("/doLoginOut")
+    Boolean doLoginOut(@RequestParam("token") String token);
     @PostMapping("saveLog")
     Boolean saveLog(LoginLog loginLog);
 
