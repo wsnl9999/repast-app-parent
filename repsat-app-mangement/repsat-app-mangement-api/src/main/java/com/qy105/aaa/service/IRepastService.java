@@ -11,11 +11,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
 import org.springframework.web.bind.annotation.RequestParam;
+import java.util.Map;
 
-import java.util.List;
-
-@FeignClient(value = "memberinfo-interface")
-//,fallbackFactory = RepastFallBackFactory.class
+@FeignClient(value = "memberinfo-interface",fallbackFactory = RepastFallBackFactory.class)
+//@FeignClient(value = "memberinfo-interface")
 public interface IRepastService {
     /**
      * create by: ws
@@ -39,6 +38,8 @@ public interface IRepastService {
      */
     @PostMapping("saveLog")
     Boolean saveLog(LoginLog loginLog);
+    @RequestMapping("/getIntegrationByToken")
+    List<Map> getIntegrationByToken(@RequestParam("token") String token);
     /**
      * create by: ws
      * description: TODO

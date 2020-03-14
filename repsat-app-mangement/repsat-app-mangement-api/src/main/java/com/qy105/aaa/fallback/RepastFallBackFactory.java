@@ -7,7 +7,9 @@ import com.qy105.aaa.service.IRepastService;
 import feign.hystrix.FallbackFactory;
 import org.springframework.stereotype.Component;
 
+
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author ：小男神
@@ -28,6 +30,12 @@ public class RepastFallBackFactory implements FallbackFactory<IRepastService> {
 
             @Override
             public Boolean doLoginOut(String token) {
+                System.out.println("熔断登出方法");
+                return null;
+            }
+
+            @Override
+            public Boolean doLoginOut(String token) {
                 System.out.println("熔断退出登录方法");
                 return null;
             }
@@ -38,6 +46,11 @@ public class RepastFallBackFactory implements FallbackFactory<IRepastService> {
                 return null;
             }
 
+            @Override
+            public List<Map> getIntegrationByToken(String token) {
+                System.out.println("熔断积分获取方法");
+                return null;
+            }
             @Override
             public List<Coupon> getAllCoupon() {
                 System.out.println("熔断查询优惠券方法");

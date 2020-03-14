@@ -12,6 +12,7 @@ import java.io.Serializable;
  */
 @Data
 public class  ResultData<T> implements Serializable {
+
     private String code;
     private String msg;
     private String detail;
