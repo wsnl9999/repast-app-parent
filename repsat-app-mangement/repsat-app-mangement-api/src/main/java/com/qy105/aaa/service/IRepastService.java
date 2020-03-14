@@ -10,6 +10,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.List;
 
 @FeignClient(value = "memberinfo-interface")
 //,fallbackFactory = RepastFallBackFactory.class
@@ -24,6 +27,8 @@ public interface IRepastService {
      */
     @RequestMapping("/doLogin")
     Boolean doLogin(@RequestBody Member member);
+    @RequestMapping("/doLoginOut")
+    Boolean doLoginOut(@RequestParam("token") String token);
     /**
      * create by: ws
      * description: TODO

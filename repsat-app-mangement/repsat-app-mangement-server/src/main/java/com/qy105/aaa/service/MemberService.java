@@ -81,4 +81,24 @@ public class MemberService extends BaseService<Member> {
         return false;
     }
 
+    /**
+     * create by: ws
+     * description: TODO 执行退出登录操作
+     * create time: 17:55 2020/3/11
+     * * @Param: token
+     * @return
+     */
+    public Boolean doLoginOut(String token) {
+        if (null != token) {
+            try {
+                Integer update = memberMapper.doLoginOut(token);
+                if (update>0){
+                    return true;
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return false;
+    }
 }

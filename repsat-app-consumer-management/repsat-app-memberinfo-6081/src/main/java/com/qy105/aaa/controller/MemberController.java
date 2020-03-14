@@ -35,9 +35,26 @@ public class MemberController extends BaseController {
     @ApiOperation(value = "登录方法",tags = "用户执行登录操作")
     @RequestMapping("/doLogin")
     @LoginAnnotation(operationType = "登录",operationName = "普通用户操作")
-    public ResultData doLogin(Member member){
+    public ResultData doLogin(@RequestBody Member member){
         Boolean aBoolean = iRepastService.doLogin(member);
         if (aBoolean){
+            return super.success();
+        }
+        return super.failed();
+    }
+    /**
+     * create by: ws
+     * description: TODO
+     *          d退出登录方法
+     * create time: 15:23 2020/3/12
+     * * @Param: null
+     * @return
+     */
+    @ApiOperation(value = "退出登录方法",tags = "用户执行退出登录操作")
+    @RequestMapping("/doLoginOut")
+    public ResultData doLoginOut(@RequestParam("token") String token){
+        Boolean aBoolean = iRepastService.doLoginOut(token);
+        if (aBoolean) {
             return super.success();
         }
         return super.failed();
