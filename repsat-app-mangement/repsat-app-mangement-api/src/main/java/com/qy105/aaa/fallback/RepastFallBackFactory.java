@@ -1,14 +1,16 @@
 package com.qy105.aaa.fallback;
 
+import com.qy105.aaa.model.Coupon;
 import com.qy105.aaa.model.LoginLog;
 import com.qy105.aaa.model.Member;
 import com.qy105.aaa.service.IRepastService;
 import feign.hystrix.FallbackFactory;
 import org.springframework.stereotype.Component;
 
-import java.util.HashMap;
+
 import java.util.List;
 import java.util.Map;
+
 
 /**
  * @author ：小男神
@@ -42,6 +44,23 @@ public class RepastFallBackFactory implements FallbackFactory<IRepastService> {
             @Override
             public List<Map> getIntegrationByToken(String token) {
                 System.out.println("熔断积分获取方法");
+                return null;
+            }
+            @Override
+            public List<Coupon> getAllCoupon() {
+                System.out.println("熔断查询优惠券方法");
+                return null;
+            }
+
+            @Override
+            public Integer addCoupon(Coupon coupon) {
+                System.out.println("熔断领取优惠券方法");
+                return null;
+            }
+
+            @Override
+            public Boolean tokenCheck() {
+                System.out.println("熔断检查方法");
                 return null;
             }
         };

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.qy105.aaa.mapper.CouponUserMapper" >
+  <resultMap id="BaseResultMap" type="com.qy105.aaa.model.CouponUser" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="coupon_id" property="couponId" jdbcType="BIGINT" />
+    <id column="user_id" property="userId" jdbcType="BIGINT" />
+    <result column="start_time" property="startTime" jdbcType="TIMESTAMP" />
+    <result column="end_time" property="endTime" jdbcType="TIMESTAMP" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+  </resultMap>
+</mapper>
