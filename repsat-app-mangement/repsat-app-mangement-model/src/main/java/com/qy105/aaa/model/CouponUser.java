@@ -17,15 +17,16 @@ public class CouponUser {
     /**
      * 优惠卷id
      */
-    @Id
     @Column(name = "coupon_id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long couponId;
+
+    @Id
+    @Column(name = "id")
+    private Long id;
 
     /**
      * 用户id
      */
-    @Id
     @Column(name = "user_id")
     private Long userId;
 

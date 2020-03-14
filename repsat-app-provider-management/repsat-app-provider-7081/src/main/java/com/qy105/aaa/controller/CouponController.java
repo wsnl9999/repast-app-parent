@@ -2,6 +2,7 @@ package com.qy105.aaa.controller;
 
 import com.qy105.aaa.model.Coupon;
 import com.qy105.aaa.model.Member;
+import com.qy105.aaa.scheduledservice.ScheduledService;
 import com.qy105.aaa.service.CouponService;
 import com.qy105.aaa.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,5 +51,24 @@ public class CouponController {
     /*coupon.setId(1L);*/
         Member member = memberService.getMember();
         return couponService.addCoupon(coupon,member);
+    }
+    /**
+     * create by: ws
+     * description: TODO
+     * g根据用户openid查询当前用户拥有的优惠券
+     * create time: 14:22 2020/3/14
+     * * @Param: null
+     * @return
+     */
+    @PostMapping("/selectCouponByOpenId")
+    public List<Coupon> selectCouponByOpenId(){
+        Member member = memberService.getMember();
+        return couponService.selectCouponByOpenId(member);
+    }
+    @Autowired
+    private ScheduledService scheduledService;
+    @PostMapping("/Test")
+    public void test(){
+        scheduledService.checkCouponStatus();
     }
 }

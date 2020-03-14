@@ -17,7 +17,9 @@ import io.swagger.annotations.ApiOperation;
 import lombok.experimental.Accessors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -35,7 +37,7 @@ public class MemberController extends BaseController {
     @ApiOperation(value = "登录方法",tags = "用户执行登录操作")
     @RequestMapping("/doLogin")
     @LoginAnnotation(operationType = "登录",operationName = "普通用户操作")
-    public ResultData doLogin(@RequestBody Member member){
+    public ResultData doLogin(Member member){
         Boolean aBoolean = iRepastService.doLogin(member);
         if (aBoolean){
             return super.success();

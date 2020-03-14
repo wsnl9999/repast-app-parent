@@ -29,7 +29,7 @@ public class TokenAspect {
 
     }
     @Before("pointcut()")
-    public Object before(JoinPoint joinPoint){
+    public Object before(){
         System.out.println("==========执行前置通知===============");
         Object res = new Object();
         Boolean aBoolean = iRepastService.tokenCheck();
