@@ -9,6 +9,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 @FeignClient(value = "memberinfo-interface",fallbackFactory = RepastFallBackFactory.class)
 public interface IRepastService {
     /**
@@ -25,5 +29,7 @@ public interface IRepastService {
     Boolean doLoginOut(@RequestParam("token") String token);
     @PostMapping("saveLog")
     Boolean saveLog(LoginLog loginLog);
+    @RequestMapping("/getIntegrationByToken")
+    List<Map> getIntegrationByToken(@RequestParam("token") String token);
 
 }

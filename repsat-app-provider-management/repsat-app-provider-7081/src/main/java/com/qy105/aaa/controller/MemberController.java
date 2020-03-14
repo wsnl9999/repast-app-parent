@@ -8,6 +8,10 @@ import com.qy105.aaa.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 /**
  * @author ：小男神
  * @date ：Created in 2020/3/11 17:48
@@ -57,6 +61,17 @@ public class MemberController {
     @PostMapping("/saveLog")
     public boolean saveLog(@RequestBody LoginLog loginLog){
         return loginLogService.addLoginLog(loginLog);
+    }
+    /**
+     * create by: ws
+     * description: TODO 查询用户积分操作
+     * create time: 17:55 2020/3/14
+     * * @Param: token
+     * @return
+     */
+    @RequestMapping("/getIntegrationByToken")
+    public List<Map> getIntegrationByToken(@RequestParam("token") String token) {
+        return memberService.getIntegrationByToken(token);
     }
 
 }

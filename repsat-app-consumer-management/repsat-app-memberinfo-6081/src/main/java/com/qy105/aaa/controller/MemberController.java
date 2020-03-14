@@ -20,8 +20,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+@RestController
 @Api(value = "用户信息",tags = "用户信息接口")
 public class MemberController extends BaseController {
     @Autowired
@@ -56,8 +61,25 @@ public class MemberController extends BaseController {
     public ResultData doLoginOut(@RequestParam("token") String token){
         Boolean aBoolean = iRepastService.doLoginOut(token);
         if (aBoolean) {
-            return super.success();
+            return super.operationSuccess();
         }
-        return super.failed();
+        return super.operationFailed();
+    }
+    /**
+     * create by: ws
+     * description: TODO 查询用户积分操作
+     * create time: 17:55 2020/3/14
+     * * @Param: token
+     * @return
+     */
+    @ApiOperation(value = "查询积分方法",tags = "查询用户积分")
+    @RequestMapping("/getIntegrationByToken")
+    public ResultData getIntegrationByToken(@RequestParam("token") String token) {
+        List<Map> list = iRepastService.getIntegrationByToken(token);
+        System.out.println("+++++++++++"+list);
+        if (null != list) {
+            return super.operationSuccess(list);
+        }
+        return super.operationFailed();
     }
 }

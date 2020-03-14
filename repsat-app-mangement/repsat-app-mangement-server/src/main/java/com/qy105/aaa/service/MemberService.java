@@ -8,6 +8,11 @@ import com.qy105.aaa.util.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tk.mybatis.mapper.common.Mapper;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 @Service
 public class MemberService extends BaseService<Member> {
 
@@ -72,5 +77,23 @@ public class MemberService extends BaseService<Member> {
             }
         }
         return false;
+    }
+    /**
+     * create by: ws
+     * description: TODO 查询用户积分操作
+     * create time: 17:55 2020/3/14
+     * * @Param: token
+     * @return
+     */
+    public List<Map> getIntegrationByToken(String token) {
+        List<Map> list = null;
+        if (null != token) {
+            try {
+                list = memberMapper.getIntegrationByToken(token);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return list;
     }
 }
