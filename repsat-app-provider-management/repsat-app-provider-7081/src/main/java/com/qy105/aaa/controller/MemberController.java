@@ -48,5 +48,9 @@ public class MemberController {
     public boolean saveLog(@RequestBody LoginLog loginLog){
         return loginLogService.addLoginLog(loginLog);
     }
+    @PostMapping("/tokenCheck")
+    public Boolean tokenCheck(){
+       return memberService.tokenCheck();
+    }
 
 }

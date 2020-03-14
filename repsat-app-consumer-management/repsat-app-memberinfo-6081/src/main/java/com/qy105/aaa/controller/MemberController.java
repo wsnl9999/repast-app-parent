@@ -18,8 +18,9 @@ import lombok.experimental.Accessors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
+@RestController
 @Api(value = "用户信息",tags = "用户信息接口")
 public class MemberController extends BaseController {
     @Autowired
