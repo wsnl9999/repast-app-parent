@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.qy105.aaa.mapper.PmsCommentMapper" >
+  <resultMap id="BaseResultMap" type="com.qy105.aaa.model.PmsComment" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="shop_id" property="shopId" jdbcType="BIGINT" />
+    <result column="order_id" property="orderId" jdbcType="BIGINT" />
+    <result column="product_id" property="productId" jdbcType="BIGINT" />
+    <result column="member_nick_name" property="memberNickName" jdbcType="VARCHAR" />
+    <result column="product_name" property="productName" jdbcType="VARCHAR" />
+    <result column="star" property="star" jdbcType="INTEGER" />
+    <result column="member_ip" property="memberIp" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="show_status" property="showStatus" jdbcType="INTEGER" />
+    <result column="product_attribute" property="productAttribute" jdbcType="VARCHAR" />
+    <result column="collect_couont" property="collectCouont" jdbcType="INTEGER" />
+    <result column="read_count" property="readCount" jdbcType="INTEGER" />
+    <result column="pics" property="pics" jdbcType="VARCHAR" />
+    <result column="member_icon" property="memberIcon" jdbcType="VARCHAR" />
+    <result column="replay_count" property="replayCount" jdbcType="INTEGER" />
+    <result column="content" property="content" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  
+  <select id="qureyPmsCommentByMemberID" resultMap="PmsCommentResultMap" parameterType="long">
+    select cm.* from pms_comment cm JOIN oms_order od ON od.id = cm.order_id  where cm.show_status = 1 AND od.member_id = #{memberid}
+  </select>
+  <resultMap id="PmsCommentResultMap" type="com.qy105.aaa.model.PmsComment" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="shop_id" property="shopId" jdbcType="BIGINT" />
+    <result column="order_id" property="orderId" jdbcType="BIGINT" />
+    <result column="product_id" property="productId" jdbcType="BIGINT" />
+    <result column="member_nick_name" property="memberNickName" jdbcType="VARCHAR" />
+    <result column="product_name" property="productName" jdbcType="VARCHAR" />
+    <result column="star" property="star" jdbcType="INTEGER" />
+    <result column="member_ip" property="memberIp" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="show_status" property="showStatus" jdbcType="INTEGER" />
+    <result column="product_attribute" property="productAttribute" jdbcType="VARCHAR" />
+    <result column="collect_couont" property="collectCouont" jdbcType="INTEGER" />
+    <result column="read_count" property="readCount" jdbcType="INTEGER" />
+    <result column="pics" property="pics" jdbcType="VARCHAR" />
+    <result column="member_icon" property="memberIcon" jdbcType="VARCHAR" />
+    <result column="replay_count" property="replayCount" jdbcType="INTEGER" />
+    <result column="content" property="content" jdbcType="LONGVARCHAR" />
+    <collection property="pmsCommentReplayList" column="id" ofType="pmsCommentReplay" select="qureyPmsCommentReplayByPmsCommentID">
+
+    </collection>
+  </resultMap>
+  <select id="qureyPmsCommentReplayByPmsCommentID" resultMap="PmsCommentReplayResultMap">
+    select * from pms_comment_replay where comment_id = #{value}
+  </select>
+  <resultMap id="PmsCommentReplayResultMap" type="com.qy105.aaa.model.PmsCommentReplay" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="comment_id" property="commentId" jdbcType="BIGINT" />
+    <result column="member_nick_name" property="memberNickName" jdbcType="VARCHAR" />
+    <result column="member_icon" property="memberIcon" jdbcType="VARCHAR" />
+    <result column="content" property="content" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="type" property="type" jdbcType="INTEGER" />
+  </resultMap>
+
+  <update id="deletePmsCommentById" parameterType="long" >
+    update pms_comment set show_status = 0 where id = #{id}
+  </update>
+</mapper>

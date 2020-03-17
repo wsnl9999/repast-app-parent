@@ -1,17 +1,20 @@
 package com.qy105.aaa.service;
 
+import com.qy105.aaa.base.ResultData;
 import com.qy105.aaa.fallback.RepastFallBackFactory;
 import com.qy105.aaa.model.Coupon;
 import com.qy105.aaa.model.LoginLog;
 import com.qy105.aaa.model.Member;
+import com.qy105.aaa.model.PmsComment;
 import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
-import org.springframework.web.bind.annotation.RequestParam;
 import java.util.Map;
+
+import static com.qy105.aaa.staticstatus.StaticCode.*;
 
 @FeignClient(value = "memberinfo-interface",fallbackFactory = RepastFallBackFactory.class)
 //@FeignClient(value = "memberinfo-interface")
@@ -84,4 +87,50 @@ public interface IRepastService {
 
     @PostMapping("/Test")
     public void test();
+
+    /**
+     *  根据用户id查询用户评论
+     * @author cat
+     * @date 2020/3/15 14:15
+     * @param memberid:
+    * @return com.qy105.aaa.base.ResultData
+     */
+    @PostMapping("/qureyPmsCommentByMemberID")
+    public ResultData qureyPmsCommentByMemberID(@RequestParam Long memberid);
+
+    /**
+     *  根据id删除评论（逻辑删除）
+     * @author cat
+     * @date 2020/3/15 14:50
+     * @param id:
+    * @return java.lang.Boolean
+     */
+    @GetMapping("/deletePmsCommentById")
+    public Boolean deletePmsCommentById(@RequestParam Long id);
+
+    /**
+     *  用户添加评论
+     * @author cat
+     * @date 2020/3/17 13:41
+     * @param file:
+    	 * @param pmsComment:
+    * @return java.lang.Boolean
+     */
+    @PostMapping(value = "/addPmsComment",
+            consumes = MediaType.MULTIPART_FORM_DATA_VALUE,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    public Boolean addPmsComment(@RequestBody MultipartFile file, @RequestBody PmsComment pmsComment);
+
+    /**
+     *  ftp上传文件
+     * @author cat
+     * @date 2020/3/17 13:41
+     * @param file:
+    	 * @param token:
+    * @return java.lang.Boolean
+     */
+    @PostMapping(value = "/upload",
+            consumes = MediaType.MULTIPART_FORM_DATA_VALUE,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    Boolean uploadFile(@RequestBody MultipartFile file, @RequestParam(TOKEN) String token);
 }

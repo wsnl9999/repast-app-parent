@@ -1,11 +1,14 @@
 package com.qy105.aaa.fallback;
 
+import com.qy105.aaa.base.ResultData;
 import com.qy105.aaa.model.Coupon;
 import com.qy105.aaa.model.LoginLog;
 import com.qy105.aaa.model.Member;
+import com.qy105.aaa.model.PmsComment;
 import com.qy105.aaa.service.IRepastService;
 import feign.hystrix.FallbackFactory;
 import org.springframework.stereotype.Component;
+import org.springframework.web.multipart.MultipartFile;
 
 
 import java.util.List;
@@ -34,11 +37,6 @@ public class RepastFallBackFactory implements FallbackFactory<IRepastService> {
                 return null;
             }
 
-            @Override
-            public Boolean doLoginOut(String token) {
-                System.out.println("熔断退出登录方法");
-                return null;
-            }
 
             @Override
             public Boolean saveLog(LoginLog loginLog) {
@@ -79,6 +77,30 @@ public class RepastFallBackFactory implements FallbackFactory<IRepastService> {
             public void test() {
                 System.out.println("------------------");
 
+            }
+
+            @Override
+            public ResultData qureyPmsCommentByMemberID(Long memberid) {
+                System.out.println("熔断查询用户评论方法");
+                return null;
+            }
+
+            @Override
+            public Boolean deletePmsCommentById(Long id) {
+                System.out.println("熔断删除用户评论方法");
+                return null;
+            }
+
+            @Override
+            public Boolean addPmsComment(MultipartFile file, PmsComment pmsComment) {
+                System.out.println("熔断增加用户评论方法");
+                return null;
+            }
+
+            @Override
+            public Boolean uploadFile(MultipartFile file, String token) {
+                System.out.println("熔断文件上传");
+                return null;
             }
         };
         return iRepastService;
