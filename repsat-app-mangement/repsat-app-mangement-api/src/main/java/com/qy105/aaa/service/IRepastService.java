@@ -71,4 +71,17 @@ public interface IRepastService {
      */
     @PostMapping("/tokenCheck")
     Boolean tokenCheck();
+    /**
+     * create by: ws
+     * description: TODO
+     * 根据openId查询该用户拥有的优惠券
+     * create time: 14:21 2020/3/14
+     * * @Param: null
+     * @return
+     */
+    @PostMapping("/selectCouponByOpenId")
+    public List<Coupon> selectCouponByOpenId();
+
+    @PostMapping("/Test")
+    public void test();
 }

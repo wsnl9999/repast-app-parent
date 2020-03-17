@@ -11,7 +11,6 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 import java.util.Map;
 
-
 /**
  * @author ：小男神
  * @date ：Created in 2020/3/11 17:36
@@ -32,6 +31,12 @@ public class RepastFallBackFactory implements FallbackFactory<IRepastService> {
             @Override
             public Boolean doLoginOut(String token) {
                 System.out.println("熔断登出方法");
+                return null;
+            }
+
+            @Override
+            public Boolean doLoginOut(String token) {
+                System.out.println("熔断退出登录方法");
                 return null;
             }
 
@@ -62,6 +67,18 @@ public class RepastFallBackFactory implements FallbackFactory<IRepastService> {
             public Boolean tokenCheck() {
                 System.out.println("熔断检查方法");
                 return null;
+            }
+
+            @Override
+            public List<Coupon> selectCouponByOpenId() {
+                System.out.println("熔断查询用户优惠券方法");
+                return null;
+            }
+
+            @Override
+            public void test() {
+                System.out.println("------------------");
+
             }
         };
         return iRepastService;

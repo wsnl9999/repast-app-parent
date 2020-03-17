@@ -73,9 +73,9 @@ public class MemberController {
     public List<Map> getIntegrationByToken(@RequestParam("token") String token) {
         return memberService.getIntegrationByToken(token);
     }
+
     @PostMapping("/tokenCheck")
     public Boolean tokenCheck(){
-       return memberService.tokenCheck();
+        return memberService.tokenCheck();
     }
-
 }

@@ -50,7 +50,14 @@ public class CouponService extends BaseService<Coupon> {
     public List<Coupon> getAllCoupon() {
         return getMapper().selectAll();
     }
-
+    /**
+     * create by: ws
+     * description: TODO
+     *  领取优惠券方法
+     * create time: 14:23 2020/3/14
+     * * @Param: null
+     * @return
+     */
     public Integer addCoupon(Coupon coupon, Member member){
         System.out.println(coupon.getId());
         Coupon coupon2 = getMapper().selectByPrimaryKey(coupon.getId());
@@ -73,4 +80,9 @@ public class CouponService extends BaseService<Coupon> {
 
     }
 
+    public List<Coupon> selectCouponByOpenId(Member member){
+
+       return couponMapper.selectCouponByOpenId(Long.valueOf(member.getOpenId()));
+
+    }
 }

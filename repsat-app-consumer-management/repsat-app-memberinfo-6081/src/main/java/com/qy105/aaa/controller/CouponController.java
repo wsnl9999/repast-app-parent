@@ -54,4 +54,20 @@ public class CouponController extends BaseController {
 
     }
 
+    @TokenAnnotation
+    @ApiOperation(value = "获取登录用户拥有的优惠券",tags = "查询优惠券")
+    @PostMapping("/selectCouponByOpenId")
+    public List<Coupon> selectCouponByOpenId(){
+        return iRepastService.selectCouponByOpenId();
+    }
+
+
+
+
+    @ApiOperation(value = "Test",tags = "查询优惠券")
+    @PostMapping("/Test")
+    public void test(){
+            iRepastService.test();
+    }
+
 }
