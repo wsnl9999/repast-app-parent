@@ -76,7 +76,6 @@ public class MemberController extends BaseController {
     @RequestMapping("/getIntegrationByToken")
     public ResultData getIntegrationByToken(@RequestParam("token") String token) {
         List<Map> list = iRepastService.getIntegrationByToken(token);
-        System.out.println("+++++++++++"+list);
         if (null != list) {
             return super.operationSuccess(list);
         }
