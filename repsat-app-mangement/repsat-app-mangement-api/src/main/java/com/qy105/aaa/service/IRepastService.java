@@ -13,6 +13,8 @@ import java.util.List;
 import org.springframework.web.bind.annotation.RequestParam;
 import java.util.Map;
 
+import static com.qy105.aaa.staticstatus.RequestProperties.TOKEN;
+
 @FeignClient(value = "memberinfo-interface",fallbackFactory = RepastFallBackFactory.class)
 //@FeignClient(value = "memberinfo-interface")
 public interface IRepastService {
@@ -27,7 +29,7 @@ public interface IRepastService {
     @RequestMapping("/doLogin")
     Boolean doLogin(@RequestBody Member member);
     @RequestMapping("/doLoginOut")
-    Boolean doLoginOut(@RequestParam("token") String token);
+    Boolean doLoginOut(@RequestParam(TOKEN) String token);
     /**
      * create by: ws
      * description: TODO
@@ -39,7 +41,7 @@ public interface IRepastService {
     @PostMapping("saveLog")
     Boolean saveLog(LoginLog loginLog);
     @RequestMapping("/getIntegrationByToken")
-    List<Map> getIntegrationByToken(@RequestParam("token") String token);
+    List<Map> getIntegrationByToken(@RequestParam(TOKEN) String token);
     /**
      * create by: ws
      * description: TODO

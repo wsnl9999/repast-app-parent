@@ -29,6 +29,8 @@ import java.util.Map;
 
 import org.springframework.web.bind.annotation.RestController;
 
+import static com.qy105.aaa.staticstatus.RequestProperties.TOKEN;
+
 @RestController
 @Api(value = "用户信息",tags = "用户信息接口")
 public class MemberController extends BaseController {
@@ -61,7 +63,7 @@ public class MemberController extends BaseController {
      */
     @ApiOperation(value = "退出登录方法",tags = "用户执行退出登录操作")
     @RequestMapping("/doLoginOut")
-    public ResultData doLoginOut(@RequestParam("token") String token){
+    public ResultData doLoginOut(@RequestParam(TOKEN) String token){
         Boolean aBoolean = iRepastService.doLoginOut(token);
         if (aBoolean) {
             return super.operationSuccess();
@@ -77,7 +79,7 @@ public class MemberController extends BaseController {
      */
     @ApiOperation(value = "查询积分方法",tags = "查询用户积分")
     @RequestMapping("/getIntegrationByToken")
-    public ResultData getIntegrationByToken(@RequestParam("token") String token) {
+    public ResultData getIntegrationByToken(@RequestParam(TOKEN) String token) {
         List<Map> list = iRepastService.getIntegrationByToken(token);
         if (null != list) {
             return super.operationSuccess(list);
