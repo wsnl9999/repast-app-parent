@@ -1,5 +1,6 @@
 package com.qy105.aaa.controller;
 
+import com.qy105.aaa.base.BaseController;
 import com.qy105.aaa.upload.FtpService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -21,7 +22,7 @@ import static com.qy105.aaa.staticstatus.StaticCode.TOKEN;
  * @version: 1.0
  */
 @RestController
-public class UploadController {
+public class UploadController extends BaseController {
     @Autowired
     private FtpService ftpService;
 

@@ -1,6 +1,4 @@
 
 /.idea
-*.iml
-*.iml
 target
-repsat-app-eureka-management/repast-app-eureka-8081/repast-app-eureka-8081.iml
+*.iml

@@ -1,6 +1,7 @@
 package com.qy105.aaa.service;
 
 import com.qy105.aaa.base.ResultData;
+import com.qy105.aaa.config.FeignMultiPartConfig;
 import com.qy105.aaa.fallback.RepastFallBackFactory;
 import com.qy105.aaa.model.Coupon;
 import com.qy105.aaa.model.LoginLog;
@@ -17,7 +18,8 @@ import java.util.Map;
 import static com.qy105.aaa.staticstatus.StaticCode.TOKEN;
 
 
-@FeignClient(value = "memberinfo-interface",fallbackFactory = RepastFallBackFactory.class)
+@FeignClient(value = "memberinfo-interface",fallbackFactory = RepastFallBackFactory.class,
+               configuration = FeignMultiPartConfig.class)
 //@FeignClient(value = "memberinfo-interface")
 public interface IRepastService {
     /**
