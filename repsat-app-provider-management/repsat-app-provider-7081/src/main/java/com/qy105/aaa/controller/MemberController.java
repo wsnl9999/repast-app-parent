@@ -10,7 +10,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Map;
 
-import static com.qy105.aaa.staticstatus.RequestProperties.*;
+import static com.qy105.aaa.staticstatus.StaticCode.TOKEN;
+
 
 /**
  * @author ：小男神

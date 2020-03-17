@@ -14,8 +14,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.util.List;
 import java.util.Map;
 
-
-import static com.qy105.aaa.staticstatus.RequestProperties.TOKEN;
+import static com.qy105.aaa.staticstatus.StaticCode.TOKEN;
 
 
 @FeignClient(value = "memberinfo-interface",fallbackFactory = RepastFallBackFactory.class)

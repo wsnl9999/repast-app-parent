@@ -29,7 +29,8 @@ import java.util.Map;
 
 import org.springframework.web.bind.annotation.RestController;
 
-import static com.qy105.aaa.staticstatus.RequestProperties.TOKEN;
+import static com.qy105.aaa.staticstatus.StaticCode.TOKEN;
+
 
 @RestController
 @Api(value = "用户信息",tags = "用户信息接口")
