@@ -47,7 +47,7 @@ public class CouponService extends BaseService<Coupon> {
      * * @Param: null
      * @return
      */
-    public List<Coupon> getAllCoupon(){
+    public List<Coupon> getAllCoupon() {
         return getMapper().selectAll();
     }
     /**

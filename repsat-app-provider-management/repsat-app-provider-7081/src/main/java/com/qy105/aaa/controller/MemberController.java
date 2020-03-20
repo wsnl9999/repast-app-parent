@@ -1,6 +1,5 @@
 package com.qy105.aaa.controller;
 
-import com.qy105.aaa.mapper.LoginLogMapper;
 import com.qy105.aaa.model.LoginLog;
 import com.qy105.aaa.model.Member;
 import com.qy105.aaa.service.LoginLogService;
@@ -8,9 +7,11 @@ import com.qy105.aaa.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import static com.qy105.aaa.staticstatus.StaticCode.TOKEN;
+
 
 /**
  * @author ：小男神
@@ -46,7 +47,7 @@ public class MemberController {
      * @return
      */
     @RequestMapping("/doLoginOut")
-    public Boolean doLoginOut(@RequestParam("token") String token){
+    public Boolean doLoginOut(@RequestParam(TOKEN) String token){
         return memberService.doLoginOut(token);
     }
 
@@ -70,7 +71,7 @@ public class MemberController {
      * @return
      */
     @RequestMapping("/getIntegrationByToken")
-    public List<Map> getIntegrationByToken(@RequestParam("token") String token) {
+    public List<Map> getIntegrationByToken(@RequestParam(TOKEN) String token) {
         return memberService.getIntegrationByToken(token);
     }
 
