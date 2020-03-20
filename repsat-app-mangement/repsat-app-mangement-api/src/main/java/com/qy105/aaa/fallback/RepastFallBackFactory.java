@@ -1,10 +1,7 @@
 package com.qy105.aaa.fallback;
 
 import com.qy105.aaa.base.ResultData;
-import com.qy105.aaa.model.Coupon;
-import com.qy105.aaa.model.LoginLog;
-import com.qy105.aaa.model.Member;
-import com.qy105.aaa.model.PmsComment;
+import com.qy105.aaa.model.*;
 import com.qy105.aaa.service.IRepastService;
 import feign.hystrix.FallbackFactory;
 import org.springframework.stereotype.Component;
@@ -101,6 +98,12 @@ public class RepastFallBackFactory implements FallbackFactory<IRepastService> {
             @Override
             public Boolean uploadFile(MultipartFile file, String token) {
                 System.out.println("熔断文件上传");
+                return null;
+            }
+
+            @Override
+            public Boolean createOrder(OmsCartItem omsCartItem) {
+                System.out.println("熔断提交订单方法");
                 return null;
             }
         };

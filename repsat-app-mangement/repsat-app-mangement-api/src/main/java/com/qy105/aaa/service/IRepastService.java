@@ -1,22 +1,15 @@
 package com.qy105.aaa.service;
-
 import com.qy105.aaa.base.ResultData;
 import com.qy105.aaa.config.FeignMultiPartConfig;
 import com.qy105.aaa.fallback.RepastFallBackFactory;
-import com.qy105.aaa.model.Coupon;
-import com.qy105.aaa.model.LoginLog;
-import com.qy105.aaa.model.Member;
-import com.qy105.aaa.model.PmsComment;
+import com.qy105.aaa.model.*;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-
 import java.util.List;
 import java.util.Map;
-
 import static com.qy105.aaa.staticstatus.StaticCode.TOKEN;
-
 
 @FeignClient(value = "memberinfo-interface",fallbackFactory = RepastFallBackFactory.class,
                configuration = FeignMultiPartConfig.class)
@@ -35,6 +28,7 @@ public interface IRepastService {
 
     @RequestMapping("/doLoginOut")
     Boolean doLoginOut(@RequestParam(TOKEN) String token);
+
     /**
      * create by: ws
      * description: TODO
@@ -45,8 +39,10 @@ public interface IRepastService {
      */
     @PostMapping("saveLog")
     Boolean saveLog(LoginLog loginLog);
+
     @RequestMapping("/getIntegrationByToken")
     List<Map> getIntegrationByToken(@RequestParam(TOKEN) String token);
+
     /**
      * create by: ws
      * description: TODO
@@ -140,4 +136,7 @@ public interface IRepastService {
             consumes = MediaType.MULTIPART_FORM_DATA_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
     Boolean uploadFile(@RequestBody MultipartFile file, @RequestParam(TOKEN) String token);
+    @PostMapping("createOrder")
+    Boolean createOrder(@RequestBody OmsCartItem omsCartItem);
+
 }
