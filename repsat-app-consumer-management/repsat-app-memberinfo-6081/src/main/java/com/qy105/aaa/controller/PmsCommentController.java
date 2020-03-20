@@ -7,6 +7,7 @@ import com.qy105.aaa.model.PmsComment;
 import com.qy105.aaa.service.IRepastService;
 import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -52,10 +53,14 @@ public class PmsCommentController extends BaseController {
         }
         return super.operationFailed();
     };
-    @TokenAnnotation
-    @PostMapping("/addPmsComment")
-    public ResultData addPmsComment(@RequestPart("file") MultipartFile file, @RequestPart("pmsComment") PmsComment pmsComment){
-        Boolean aBoolean = iRepastService.addPmsComment(file, pmsComment);
+
+    @PostMapping(value = "/addPmsComment",
+            consumes = MediaType.MULTIPART_FORM_DATA_VALUE,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResultData addPmsComment(@RequestBody MultipartFile file, @RequestParam("id") Long id
+            , @RequestParam("star") Integer star,@RequestParam("content") String content){
+
+        Boolean aBoolean = iRepastService.addPmsComment(file, id,star,content);
         if (aBoolean){
             return super.operationSuccess();
         }

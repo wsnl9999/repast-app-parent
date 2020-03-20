@@ -92,10 +92,11 @@ public class RepastFallBackFactory implements FallbackFactory<IRepastService> {
             }
 
             @Override
-            public Boolean addPmsComment(MultipartFile file, PmsComment pmsComment) {
+            public Boolean addPmsComment(MultipartFile file, Long id, Integer star, String content) {
                 System.out.println("熔断增加用户评论方法");
                 return null;
             }
+
 
             @Override
             public Boolean uploadFile(MultipartFile file, String token) {

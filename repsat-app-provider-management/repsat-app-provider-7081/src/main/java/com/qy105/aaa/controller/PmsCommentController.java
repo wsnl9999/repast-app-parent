@@ -40,8 +40,12 @@ public class PmsCommentController {
     @PostMapping(value = "/addPmsComment",
             consumes = MediaType.MULTIPART_FORM_DATA_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
-    public Boolean addPmsComment(@RequestBody MultipartFile file, @RequestParam("pmsComment") PmsComment pmsComment){
-
+    public Boolean addPmsComment(@RequestBody MultipartFile file, @RequestParam("id") Long id
+            , @RequestParam("star") Integer star,@RequestParam("content") String content){
+        PmsComment pmsComment = new PmsComment();
+        pmsComment.setId(id);
+        pmsComment.setStar(star);
+        pmsComment.setContent(content);
         Map<String, Object> upload = ftpService.upload(file, null);
         if(!(Boolean)upload.get(RESULT)) {
             // 说明上传失败！！需要跳转到错误页面

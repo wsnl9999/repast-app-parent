@@ -99,7 +99,7 @@ public interface IRepastService {
     * @return com.qy105.aaa.base.ResultData
      */
     @PostMapping("/qureyPmsCommentByMemberID")
-    public ResultData qureyPmsCommentByMemberID(@RequestParam Long memberid);
+    public ResultData qureyPmsCommentByMemberID(@RequestParam("memberid") Long memberid);
 
     /**
      *  根据id删除评论（逻辑删除）
@@ -109,20 +109,23 @@ public interface IRepastService {
     * @return java.lang.Boolean
      */
     @GetMapping("/deletePmsCommentById")
-    public Boolean deletePmsCommentById(@RequestParam Long id);
+    public Boolean deletePmsCommentById(@RequestParam("id") Long id);
 
     /**
      *  用户添加评论
      * @author cat
-     * @date 2020/3/17 13:41
+     * @date 2020/3/20 16:32
      * @param file:
-    	 * @param pmsComment:
+    	 * @param id:
+    	 * @param star:
+    	 * @param content:
     * @return java.lang.Boolean
      */
     @PostMapping(value = "/addPmsComment",
             consumes = MediaType.MULTIPART_FORM_DATA_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
-    public Boolean addPmsComment(@RequestBody MultipartFile file, @RequestBody PmsComment pmsComment);
+    public Boolean addPmsComment(@RequestBody MultipartFile file, @RequestParam("id") Long id
+            , @RequestParam("star") Integer star,@RequestParam("content") String content);
 
     /**
      *  ftp上传文件
