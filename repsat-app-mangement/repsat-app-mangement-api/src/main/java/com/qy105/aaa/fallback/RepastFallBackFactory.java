@@ -30,15 +30,10 @@ public class RepastFallBackFactory implements FallbackFactory<IRepastService> {
 
             @Override
             public Boolean doLoginOut(String token) {
-                System.out.println("熔断登出方法");
+                System.out.println("熔断退出录方法");
                 return null;
             }
 
-            @Override
-            public Boolean doLoginOut(String token) {
-                System.out.println("熔断退出登录方法");
-                return null;
-            }
 
             @Override
             public Boolean saveLog(LoginLog loginLog) {

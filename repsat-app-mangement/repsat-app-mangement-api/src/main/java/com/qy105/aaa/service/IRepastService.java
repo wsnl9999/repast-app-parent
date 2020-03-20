@@ -26,6 +26,7 @@ public interface IRepastService {
      */
     @RequestMapping("/doLogin")
     Boolean doLogin(@RequestBody Member member);
+
     @RequestMapping("/doLoginOut")
     Boolean doLoginOut(@RequestParam("token") String token);
     /**

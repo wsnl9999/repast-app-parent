@@ -22,7 +22,7 @@ public class MemberService extends BaseService<Member> {
 
 
     private Member member;
-    public Member getMember(){
+    public Member getMember() {
         return member;
     }
     @Override
