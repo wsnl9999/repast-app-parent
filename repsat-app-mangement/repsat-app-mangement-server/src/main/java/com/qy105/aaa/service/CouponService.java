@@ -2,14 +2,11 @@ package com.qy105.aaa.service;
 
 import com.qy105.aaa.base.BaseService;
 import com.qy105.aaa.mapper.CouponMapper;
-import com.qy105.aaa.mapper.CouponUserMapper;
 import com.qy105.aaa.model.Coupon;
 import com.qy105.aaa.model.CouponUser;
 import com.qy105.aaa.model.Member;
-import com.qy105.aaa.util.DateUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PostMapping;
 import tk.mybatis.mapper.common.Mapper;
 
 import java.text.SimpleDateFormat;
@@ -17,7 +14,6 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-import static com.qy105.aaa.staticstatus.StaticCode.FORMAT_DATE;
 import static com.qy105.aaa.staticstatus.StaticCode.FORMAT_DATE2;
 
 /**
@@ -28,6 +24,7 @@ import static com.qy105.aaa.staticstatus.StaticCode.FORMAT_DATE2;
  */
 @Service
 public class CouponService extends BaseService<Coupon> {
+
     @Autowired
     private CouponMapper couponMapper;
 
@@ -81,8 +78,8 @@ public class CouponService extends BaseService<Coupon> {
     }
 
     public List<Coupon> selectCouponByOpenId(Member member){
-
-       return couponMapper.selectCouponByOpenId(Long.valueOf(member.getOpenId()));
+return null;
+//       return couponMapper.selectCouponByOpenId(Long.valueOf(member.getOpenId()));
 
     }
 }

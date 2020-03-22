@@ -11,7 +11,7 @@
     <result column="member_id" property="memberId" jdbcType="BIGINT" />
     <result column="shop_id" property="shopId" jdbcType="BIGINT" />
     <result column="quantity" property="quantity" jdbcType="INTEGER" />
-    <result column="price" property="price" jdbcType="DECIMAL" />
+    <result column="price" property="price" jdbcType="DOUBLE" />
     <result column="sp1" property="sp1" jdbcType="VARCHAR" />
     <result column="sp2" property="sp2" jdbcType="VARCHAR" />
     <result column="sp3" property="sp3" jdbcType="VARCHAR" />

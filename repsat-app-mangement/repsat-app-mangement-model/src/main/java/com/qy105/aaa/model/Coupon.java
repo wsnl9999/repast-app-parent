@@ -2,6 +2,7 @@ package com.qy105.aaa.model;
 
 import lombok.*;
 import lombok.experimental.Accessors;
+
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Date;
@@ -34,11 +35,6 @@ public class Coupon {
     private Integer platform;
 
     /**
-     * 有效时长
-     */
-    private Integer duration;
-
-    /**
      * 数量
      */
     private Integer count;
@@ -46,7 +42,7 @@ public class Coupon {
     /**
      * 金额
      */
-    private BigDecimal amount;
+    private Double amount;
 
     /**
      * 每人限领张数
@@ -58,7 +54,7 @@ public class Coupon {
      * 使用门槛；0表示无门槛
      */
     @Column(name = "min_point")
-    private BigDecimal minPoint;
+    private double minPoint;
 
     @Column(name = "start_time")
     private Date startTime;
@@ -112,5 +108,9 @@ public class Coupon {
     @Column(name = "member_level")
     private Integer memberLevel;
 
+    /**
+     * 优惠券有效时长
+     */
+    private Integer duration;
 
 }

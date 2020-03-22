@@ -8,7 +8,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -25,8 +25,8 @@ public class OrderController extends BaseController {
 
     @ApiOperation(value = "提交订单方法",tags = "用户提交订单")
     @PostMapping("createOrder")
-    public ResultData createOrder(OmsCartItem omsCartItem){
-        Boolean order = iRepastService.createOrder(omsCartItem);
+    public ResultData createOrder(OmsCartItem omsCartItem, @RequestParam("addressId") Object addressId, @RequestParam("time") String time, @RequestParam("couponId") int couponId){
+        Boolean order = iRepastService.createOrder(omsCartItem,addressId,time,couponId);
         if (order){
             return super.success();
         }

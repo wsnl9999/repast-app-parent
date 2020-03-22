@@ -5,6 +5,7 @@ import com.qy105.aaa.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -19,7 +20,7 @@ public class OrderController {
     @Autowired
     private OrderService orderService;
     @PostMapping("createOrder")
-    Boolean createOrder(@RequestBody OmsCartItem omsCartItem){
-        return orderService.createOrder(omsCartItem);
+    public Boolean createOrder(@RequestBody OmsCartItem omsCartItem, @RequestParam("addressId") Object addressId, @RequestParam("time") String time, @RequestParam("couponId") int couponId){
+        return orderService.createOrder(omsCartItem,addressId,time,couponId);
     }
 }

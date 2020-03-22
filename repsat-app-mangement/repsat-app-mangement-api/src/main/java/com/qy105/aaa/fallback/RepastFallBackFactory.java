@@ -94,18 +94,20 @@ public class RepastFallBackFactory implements FallbackFactory<IRepastService> {
                 return null;
             }
 
-
             @Override
             public Boolean uploadFile(MultipartFile file, String token) {
+                return null;
+            }
+
+
+            @Override
+            public Boolean createOrder(OmsCartItem omsCartItem, Object addressId, String time, int couponId) {
                 System.out.println("熔断文件上传");
                 return null;
             }
 
-            @Override
-            public Boolean createOrder(OmsCartItem omsCartItem) {
-                System.out.println("熔断提交订单方法");
-                return null;
-            }
+
+
         };
         return iRepastService;
     }
