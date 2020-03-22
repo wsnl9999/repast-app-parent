@@ -13,7 +13,7 @@ public class StaticCode {
     public static final String CITY = "city";
     public static final String FORMAT_DATE = "yyyy-MM-dd HH:mm:ss";
     public static final String FORMAT_DATE2 = "yyyy-MM-dd";
-    public static final String FORMAT_DATE3 = "yyyyMMddHHmmss";
+    public static final String FORMAT_DATE3 = "yyyyMMddHHmmssSSS";
     public static final String IPADDR = "222.137.210.39";
     public static final String TOKEN = "token";
     public static final String RESULT = "result";

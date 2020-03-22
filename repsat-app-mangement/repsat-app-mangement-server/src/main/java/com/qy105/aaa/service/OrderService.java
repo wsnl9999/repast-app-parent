@@ -2,10 +2,7 @@ package com.qy105.aaa.service;
 
 import com.qy105.aaa.base.BaseService;
 import com.qy105.aaa.mapper.OmsOrderMapper;
-import com.qy105.aaa.model.Coupon;
-import com.qy105.aaa.model.OmsCartItem;
-import com.qy105.aaa.model.OmsOrder;
-import com.qy105.aaa.model.PmsProduct;
+import com.qy105.aaa.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tk.mybatis.mapper.common.Mapper;
@@ -36,6 +33,8 @@ public class OrderService extends BaseService<OmsOrder> {
     private MemberService memberService;
     @Autowired
     private CouponService couponService;
+    @Autowired
+    private OmsOrderItemService omsOrderItemService;
     @Override
     public Mapper<OmsOrder> getMapper() {
         return omsOrderMapper;
@@ -75,7 +74,8 @@ public class OrderService extends BaseService<OmsOrder> {
                         boo=true;
                     }
                 }
-                if(!"".equals(time)||!"null".equals(time)){
+
+                if(!"null".equals(time)){
                     omsOrder.setOrderType(2);
                 }else{
                     omsOrder.setOrderType(1);
@@ -88,7 +88,8 @@ public class OrderService extends BaseService<OmsOrder> {
                 omsOrder.setMemberId(omsCartItem1.getMemberId());
                 omsOrder.setShopId(omsCartItem1.getShopId());
                 SimpleDateFormat sdf = new SimpleDateFormat(FORMAT_DATE3);
-                omsOrder.setOrderSn(sdf.format(new Date()));
+                String format = sdf.format(new Date());
+                omsOrder.setOrderSn(format);
                 /*omsOrder.setCreateTime(new Date());*/
                 omsOrder.setMemberUsername(memberService.getMapper().selectByPrimaryKey(omsCartItem1.getMemberId()).getUsername());
                 //应付金额
@@ -105,7 +106,16 @@ public class OrderService extends BaseService<OmsOrder> {
                     System.out.println("实付金额"+payAmount);
                 }
                 omsOrder.setPayAmount(payAmount);
-                getMapper().insert(omsOrder);
+                int insert = getMapper().insert(omsOrder);
+                if (insert>0){
+                    //添加订单所包含的商品表数据
+                    OmsOrderItem omsOrderItem = new OmsOrderItem();
+                    Long idByOrderSn = omsOrderMapper.getIdByOrderSn(format);
+                    System.out.println("format"+idByOrderSn);
+                    omsOrderItem.setOrderId(idByOrderSn);
+                    omsOrderItem.setProductId(productId);
+                    omsOrderItemService.getMapper().insert(omsOrderItem);
+                }
                 return boo;
             }
 
