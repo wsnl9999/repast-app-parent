@@ -136,7 +136,14 @@ public interface IRepastService {
             consumes = MediaType.MULTIPART_FORM_DATA_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
     Boolean uploadFile(@RequestBody MultipartFile file, @RequestParam(TOKEN) String token);
-    @PostMapping("createOrder")
+   /**
+    * @Author      : pyt
+    * @Description : 
+    * @Params:     : [omsCartItem]
+    * @Return      : java.lang.Boolean
+    * @Date        : Created in 2020/3/22 20:08
+    **/
+    @RequestMapping("/createOrder")
     Boolean createOrder(@RequestBody OmsCartItem omsCartItem);
 
 }
