@@ -135,17 +135,6 @@ public interface IRepastService {
             consumes = MediaType.MULTIPART_FORM_DATA_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
     Boolean uploadFile(@RequestBody MultipartFile file, @RequestParam(TOKEN) String token);
-<<<<<<< HEAD
-   /**
-    * @Author      : pyt
-    * @Description : 
-    * @Params:     : [omsCartItem]
-    * @Return      : java.lang.Boolean
-    * @Date        : Created in 2020/3/22 20:08
-    **/
-    @RequestMapping("/createOrder")
-    Boolean createOrder(@RequestBody OmsCartItem omsCartItem);
-=======
     
     /**
      * create by: ws
@@ -156,6 +145,6 @@ public interface IRepastService {
      */
     @PostMapping("createOrder")
     Boolean createOrder(@RequestBody OmsCartItem omsCartItem,@RequestParam("addressId") Object addressId,@RequestParam("time") String time,@RequestParam("couponId") int couponId);
->>>>>>> d37db22dff825a5816df442def233d56ebd1a533
+
 
 }

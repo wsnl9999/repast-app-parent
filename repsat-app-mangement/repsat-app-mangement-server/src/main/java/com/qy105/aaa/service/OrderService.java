@@ -2,25 +2,18 @@ package com.qy105.aaa.service;
 
 import com.qy105.aaa.base.BaseService;
 import com.qy105.aaa.mapper.OmsOrderMapper;
-<<<<<<< HEAD
 import com.qy105.aaa.model.OmsCartItem;
 import com.qy105.aaa.model.OmsOrder;
 import com.qy105.aaa.model.PmsProduct;
-import com.qy105.aaa.util.JSONUtil;
-=======
 import com.qy105.aaa.model.*;
->>>>>>> d37db22dff825a5816df442def233d56ebd1a533
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import tk.mybatis.mapper.annotation.Order;
 import tk.mybatis.mapper.common.Mapper;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.Map;
 
-import static com.qy105.aaa.staticstatus.StaticCode.FORMAT_DATE2;
 import static com.qy105.aaa.staticstatus.StaticCode.FORMAT_DATE3;
 
 /**
