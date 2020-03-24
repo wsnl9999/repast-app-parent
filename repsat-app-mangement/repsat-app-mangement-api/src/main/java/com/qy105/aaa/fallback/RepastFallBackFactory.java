@@ -107,10 +107,7 @@ public class RepastFallBackFactory implements FallbackFactory<IRepastService> {
                 return null;
             }
 
-            @Override
-            public ResultData deleteOrder(Long id) {
-                return null;
-            }
+
             @Override
             public ResultData addAddress(Address address) {
                 return null;
@@ -148,6 +145,16 @@ public class RepastFallBackFactory implements FallbackFactory<IRepastService> {
 
             @Override
             public ResultData updateMember(Member member) {
+                return null;
+            }
+
+            @Override
+            public int useCoupon(Object couponId) {
+                return 0;
+            }
+
+            @Override
+            public Boolean deleteOrder(Long id) {
                 return null;
             }
 
