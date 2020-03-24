@@ -19,17 +19,12 @@ import io.swagger.annotations.ApiOperation;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-
+import org.springframework.web.bind.annotation.*;
 
 
 import java.util.List;
 import java.util.Map;
 
-
-import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
@@ -50,7 +45,7 @@ public class MemberController extends BaseController {
      * @return
      */
         @ApiOperation(value = "登录方法",tags = "用户执行登录操作")
-        @RequestMapping("/doLogin")
+        @PostMapping("/doLogin")
         @LoginAnnotation(operationType = "登录",operationName = "普通用户操作")
         public ResultData doLogin(@RequestBody Member member){
             Boolean aBoolean = iRepastService.doLogin(member);
@@ -68,13 +63,33 @@ public class MemberController extends BaseController {
      * @return
      */
     @ApiOperation(value = "退出登录方法",tags = "用户执行退出登录操作")
-    @RequestMapping("/doLoginOut")
+    @PostMapping("/doLoginOut")
     public ResultData doLoginOut(@RequestParam(TOKEN) String token){
         Boolean aBoolean = iRepastService.doLoginOut(token);
         if (aBoolean) {
             return super.operationSuccess();
         }
         return super.operationFailed();
+    }
+    /**
+     * 修改个人信息
+     * @param member
+     * @return
+     */
+    @PostMapping("/updateMember")
+    public ResultData updateMember(Member member){
+        ResultData resultData =iRepastService.updateMember(member);
+        return resultData;
+    }
+
+    /**
+     * 查询个人信息
+     * @param member
+     * @return
+     */
+    @PostMapping("/selectMember")
+    public ResultData selcetMember(@RequestBody Member member){
+        return iRepastService.selcetMember(member);
     }
     /**
      * create by: ws
@@ -84,7 +99,7 @@ public class MemberController extends BaseController {
      * @return
      */
     @ApiOperation(value = "查询积分方法",tags = "查询用户积分")
-    @RequestMapping("/getIntegrationByToken")
+    @PostMapping("/getIntegrationByToken")
     public ResultData getIntegrationByToken(@RequestParam(TOKEN) String token) {
         List<Map> list = iRepastService.getIntegrationByToken(token);
         if (null != list) {

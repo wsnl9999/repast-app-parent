@@ -76,10 +76,18 @@ public class CouponService extends BaseService<Coupon> {
         return couponUserService.addCoupon(couponUser);
 
     }
-
+    /**
+     * create by: ws
+     * description: TODO
+     * 根据openId获取当前用户拥有的优惠券
+     * create time: 23:12 2020/3/24
+     * * @Param: null
+     * @return
+     */
     public List<Coupon> selectCouponByOpenId(Member member){
-return null;
-//       return couponMapper.selectCouponByOpenId(Long.valueOf(member.getOpenId()));
+
+       return couponMapper.selectCouponByOpenId(Long.valueOf(member.getOpenId()));
 
     }
+
 }

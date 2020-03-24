@@ -145,5 +145,40 @@ public interface IRepastService {
      */
     @PostMapping("createOrder")
     Boolean createOrder(@RequestBody OmsCartItem omsCartItem,@RequestParam("addressId") Object addressId,@RequestParam("time") String time,@RequestParam("couponId") int couponId);
+    /**
+     * 添加地址
+     * @param address
+     * @return
+     */
+    @PostMapping("/addAddress")
+    ResultData addAddress(@RequestBody Address address);
+    @PostMapping("/updateAddress")
+    ResultData updateAddress(@RequestBody Address address);
+    @PostMapping("/deleteAddress")
+    ResultData deleteAddress(@RequestBody Address address);
+    @PostMapping("/selcetAddress")
+    ResultData selcetAddress(@RequestBody Address address);
+    @PostMapping("/deleteAllAddress")
+    ResultData deleteAllAddress(@RequestBody Integer[] id);
+    @PostMapping("/updateAddressStatus")
+    ResultData updateAddresStatus(@RequestBody Address address);
 
+    /**
+     * 查询个人信息
+     * @param member
+     * @return
+     */
+    @PostMapping("/selectMember")
+    ResultData selcetMember(@RequestBody Member member);
+
+    /**
+     * 修改个人信息
+     * @param member
+     * @return
+     */
+    @PostMapping("/updateMember")
+    ResultData updateMember(@RequestBody Member member);
+
+    @PostMapping("/useCoupon")
+    int useCoupon(@RequestParam("couponId") Object couponId);
 }

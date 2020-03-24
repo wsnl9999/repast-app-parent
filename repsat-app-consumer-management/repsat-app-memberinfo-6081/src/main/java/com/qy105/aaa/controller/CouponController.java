@@ -2,6 +2,7 @@ package com.qy105.aaa.controller;
 
 import com.qy105.aaa.annotation.TokenAnnotation;
 import com.qy105.aaa.base.BaseController;
+import com.qy105.aaa.base.ResultData;
 import com.qy105.aaa.model.Coupon;
 import com.qy105.aaa.service.IRepastService;
 import io.swagger.annotations.Api;
@@ -35,7 +36,7 @@ public class CouponController extends BaseController {
      */
     @TokenAnnotation
     @ApiOperation(value = "获取所有优惠券方法",tags = "获取所有优惠券")
-    @RequestMapping("/getAllCoupon")
+    @PostMapping("/getAllCoupon")
     public List<Coupon> getAllCoupon(){
         List<Coupon> allCoupon = iRepastService.getAllCoupon();
         System.out.println("============"+allCoupon);
@@ -62,10 +63,23 @@ public class CouponController extends BaseController {
 
 
 
-    @ApiOperation(value = "Test",tags = "查询优惠券")
+    @ApiOperation(value = "Test",tags = "。。。")
     @PostMapping("/Test")
     public void test(){
             iRepastService.test();
+    }
+
+
+
+    @ApiOperation(value = "使用优惠券",tags = "使用优惠券")
+    @PostMapping("/useCoupon")
+    public ResultData useCoupon (Object couponId){
+        int i = iRepastService.useCoupon(couponId);
+        if (i>0){
+            return super.success();
+        }else{
+            return super.failed();
+        }
     }
 
 }

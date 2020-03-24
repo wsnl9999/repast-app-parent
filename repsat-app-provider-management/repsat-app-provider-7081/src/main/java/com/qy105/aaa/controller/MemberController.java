@@ -1,5 +1,6 @@
 package com.qy105.aaa.controller;
 
+import com.qy105.aaa.base.ResultData;
 import com.qy105.aaa.model.LoginLog;
 import com.qy105.aaa.model.Member;
 import com.qy105.aaa.service.LoginLogService;
@@ -50,7 +51,26 @@ public class MemberController {
     public Boolean doLoginOut(@RequestParam(TOKEN) String token){
         return memberService.doLoginOut(token);
     }
+    /**
+     * 修改个人信息
+     * @param member
+     * @return
+     */
+    @PostMapping("/updateMember")
+    public ResultData updateMember(@RequestBody Map member){
+        return updateMember(member);
 
+    }
+
+    /**
+     * 查询个人信息
+     * @param member
+     * @return
+     */
+    @PostMapping("/selectMember")
+    public ResultData selcetMember(@RequestBody Map member){
+        return selcetMember(member);
+    }
     /**
      * create by: ws
      * description: TODO

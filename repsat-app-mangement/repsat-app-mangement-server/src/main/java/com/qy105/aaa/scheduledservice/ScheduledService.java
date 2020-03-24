@@ -56,4 +56,9 @@ public class ScheduledService {
             }
         }
     }
+
+    public int useCoupon(int i) {
+
+        return 0;
+    }
 }

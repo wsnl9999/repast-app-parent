@@ -106,6 +106,45 @@ public class RepastFallBackFactory implements FallbackFactory<IRepastService> {
                 return null;
             }
 
+            @Override
+            public ResultData addAddress(Address address) {
+                return null;
+            }
+
+            @Override
+            public ResultData updateAddress(Address address) {
+                return null;
+            }
+
+            @Override
+            public ResultData deleteAddress(Address address) {
+                return null;
+            }
+
+            @Override
+            public ResultData selcetAddress(Address address) {
+                return null;
+            }
+
+            @Override
+            public ResultData deleteAllAddress(Integer[] id) {
+                return null;
+            }
+
+            @Override
+            public ResultData updateAddresStatus(Address address) {
+                return null;
+            }
+
+            @Override
+            public ResultData selcetMember(Member member) {
+                return null;
+            }
+
+            @Override
+            public ResultData updateMember(Member member) {
+                return null;
+            }
 
 
         };
