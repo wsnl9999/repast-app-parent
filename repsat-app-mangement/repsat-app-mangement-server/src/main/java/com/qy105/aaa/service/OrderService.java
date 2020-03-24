@@ -127,5 +127,23 @@ public class OrderService extends BaseService<OmsOrder> {
         return boo;
     }
 
+    /**
+     * create by: pyr
+     * description:逻辑删除订单
+     * create time: 0:47 2020/3/22
+     * * @Param: null
+     * @return
+     */
+    public Boolean deleteOrder(Long id) {
+        if (id != null) {
+            int i = omsOrderMapper.deleteOrder(id);
+            if (i > 0) {
+                //删除成功
+                return true;
+            }
+            return false;
+        }
+        return false;
+    }
 
 }

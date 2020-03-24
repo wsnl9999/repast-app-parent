@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import java.util.List;
 import java.util.Map;
+
+import static com.qy105.aaa.staticstatus.StaticCode.ID;
 import static com.qy105.aaa.staticstatus.StaticCode.TOKEN;
 
 //@FeignClient(value = "memberinfo-interface",fallbackFactory = RepastFallBackFactory.class,configuration = FeignMultiPartConfig.class)
@@ -145,6 +147,13 @@ public interface IRepastService {
      */
     @PostMapping("createOrder")
     Boolean createOrder(@RequestBody OmsCartItem omsCartItem,@RequestParam("addressId") Object addressId,@RequestParam("time") String time,@RequestParam("couponId") int couponId);
-
-
+    /**
+     * create by: pyr
+     * description:逻辑删除订单
+     * create time: 0:47 2020/3/22
+     * * @Param: null
+     * @return
+     */
+    @RequestMapping("/deleteOrder")
+    Boolean deleteOrder(@RequestParam(ID) Long id);
 }

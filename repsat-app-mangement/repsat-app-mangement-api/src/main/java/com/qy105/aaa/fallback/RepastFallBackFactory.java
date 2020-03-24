@@ -100,11 +100,6 @@ public class RepastFallBackFactory implements FallbackFactory<IRepastService> {
                 return null;
             }
 
-            @Override
-            public @RequestMapping("/createOrder") <HEAD> Boolean createOrder(OmsCartItem omsCartItem) {
-                return null;
-            }
-
 
             @Override
             public Boolean createOrder(OmsCartItem omsCartItem, Object addressId, String time, int couponId) {
@@ -112,6 +107,10 @@ public class RepastFallBackFactory implements FallbackFactory<IRepastService> {
                 return null;
             }
 
+            @Override
+            public ResultData deleteOrder(Long id) {
+                return null;
+            }
 
 
         };

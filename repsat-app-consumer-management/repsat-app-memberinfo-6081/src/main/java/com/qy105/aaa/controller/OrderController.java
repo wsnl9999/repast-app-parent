@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import static com.qy105.aaa.staticstatus.StaticCode.ID;
+
 /**
  * @author ：小男神
  * @date ：Created in 2020/3/20 23:45
@@ -33,4 +35,14 @@ public class OrderController extends BaseController {
         }
         return super.operationFailed();
     }
+    @ApiOperation(value = "删除订单方法",tags = "用户删除订单")
+    @RequestMapping("/deleteOrder")
+    public ResultData deleteOrder(@RequestParam(ID) Long id){
+        Boolean order = iRepastService.deleteOrder(id);
+        if (order) {
+            return super.success();
+        }
+        return super.failed();
+    }
+
 }
