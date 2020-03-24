@@ -11,9 +11,8 @@ import java.util.List;
 import java.util.Map;
 import static com.qy105.aaa.staticstatus.StaticCode.TOKEN;
 
-@FeignClient(value = "memberinfo-interface",fallbackFactory = RepastFallBackFactory.class,
-               configuration = FeignMultiPartConfig.class)
-//@FeignClient(value = "memberinfo-interface")
+//@FeignClient(value = "memberinfo-interface",fallbackFactory = RepastFallBackFactory.class,configuration = FeignMultiPartConfig.class)
+@FeignClient(value = "memberinfo-interface")
 public interface IRepastService {
     /**
      * create by: ws
@@ -136,6 +135,7 @@ public interface IRepastService {
             consumes = MediaType.MULTIPART_FORM_DATA_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
     Boolean uploadFile(@RequestBody MultipartFile file, @RequestParam(TOKEN) String token);
+<<<<<<< HEAD
    /**
     * @Author      : pyt
     * @Description : 
@@ -145,5 +145,17 @@ public interface IRepastService {
     **/
     @RequestMapping("/createOrder")
     Boolean createOrder(@RequestBody OmsCartItem omsCartItem);
+=======
+    
+    /**
+     * create by: ws
+     * description: TODO
+     * create time: 0:47 2020/3/22
+     * * @Param: null
+     * @return 
+     */
+    @PostMapping("createOrder")
+    Boolean createOrder(@RequestBody OmsCartItem omsCartItem,@RequestParam("addressId") Object addressId,@RequestParam("time") String time,@RequestParam("couponId") int couponId);
+>>>>>>> d37db22dff825a5816df442def233d56ebd1a533
 
 }
