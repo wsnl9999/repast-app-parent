@@ -2,6 +2,9 @@ package com.qy105.aaa.service;
 
 import com.qy105.aaa.base.BaseService;
 import com.qy105.aaa.mapper.OmsOrderMapper;
+import com.qy105.aaa.model.OmsCartItem;
+import com.qy105.aaa.model.OmsOrder;
+import com.qy105.aaa.model.PmsProduct;
 import com.qy105.aaa.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,7 +14,6 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-import static com.qy105.aaa.staticstatus.StaticCode.FORMAT_DATE2;
 import static com.qy105.aaa.staticstatus.StaticCode.FORMAT_DATE3;
 
 /**
@@ -131,4 +133,24 @@ public class OrderService extends BaseService<OmsOrder> {
         }
         return boo;
     }
+
+    /**
+     * create by: pyr
+     * description:逻辑删除订单
+     * create time: 0:47 2020/3/22
+     * * @Param: null
+     * @return
+     */
+    public Boolean deleteOrder(Long id) {
+        if (id != null) {
+            int i = omsOrderMapper.deleteOrder(id);
+            if (i > 0) {
+                //删除成功
+                return true;
+            }
+            return false;
+        }
+        return false;
+    }
+
 }

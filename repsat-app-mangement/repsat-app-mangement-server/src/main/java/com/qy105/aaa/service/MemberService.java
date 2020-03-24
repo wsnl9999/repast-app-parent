@@ -20,7 +20,6 @@ public class MemberService extends BaseService<Member> {
     @Autowired
     private MemberMapper memberMapper;
 
-
     private Member member;
     public Member getMember() {
         return member;

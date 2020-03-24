@@ -5,6 +5,7 @@ import com.qy105.aaa.model.*;
 import com.qy105.aaa.service.IRepastService;
 import feign.hystrix.FallbackFactory;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 
 
@@ -106,6 +107,10 @@ public class RepastFallBackFactory implements FallbackFactory<IRepastService> {
                 return null;
             }
 
+            @Override
+            public ResultData deleteOrder(Long id) {
+                return null;
+            }
             @Override
             public ResultData addAddress(Address address) {
                 return null;

@@ -8,8 +8,11 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import static com.qy105.aaa.staticstatus.StaticCode.ID;
 
 /**
  * @author ：小男神
@@ -32,4 +35,14 @@ public class OrderController extends BaseController {
         }
         return super.operationFailed();
     }
+    @ApiOperation(value = "删除订单方法",tags = "用户删除订单")
+    @RequestMapping("/deleteOrder")
+    public ResultData deleteOrder(@RequestParam(ID) Long id){
+        Boolean order = iRepastService.deleteOrder(id);
+        if (order) {
+            return super.success();
+        }
+        return super.failed();
+    }
+
 }

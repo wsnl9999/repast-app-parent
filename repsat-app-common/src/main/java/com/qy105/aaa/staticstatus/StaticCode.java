@@ -19,6 +19,7 @@ public class StaticCode {
     public static final String RESULT = "result";
     public static final String PICPATH = "picPath";
     public static final String POINT = ".";
+    public static final String ID = "id";
     public static final String WS = ".";
     /**
      * UTF-8编码集常量
