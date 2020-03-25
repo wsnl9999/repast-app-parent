@@ -92,4 +92,20 @@ public class MemberController extends BaseController {
         }
         return super.operationFailed();
     }
+    /**
+     * create by: ws
+     * description: TODO 查询用户积分规则操作
+     * create time: 17:55 2020/3/14
+     * * @Param: token
+     * @return
+     */
+    @ApiOperation(value = "查询积分规则方法",tags = "查询积分规则")
+    @RequestMapping("/getMemberRuleSettingByToken")
+    public ResultData getMemberRuleSettingByToken(@RequestParam(TOKEN) String token) {
+        Map map = iRepastService.getMemberRuleSettingByToken(token);
+        if (null != map) {
+            return super.operationSuccess(map);
+        }
+        return super.operationFailed();
+    }
 }

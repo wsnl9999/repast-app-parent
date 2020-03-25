@@ -74,7 +74,17 @@ public class MemberController {
     public List<Map> getIntegrationByToken(@RequestParam(TOKEN) String token) {
         return memberService.getIntegrationByToken(token);
     }
-
+    /**
+     * create by: ws
+     * description: TODO 查询用户积分规则操作
+     * create time: 17:55 2020/3/14
+     * * @Param: token
+     * @return
+     */
+    @RequestMapping("/getMemberRuleSettingByToken")
+    public Map getMemberRuleSettingByToken(@RequestParam(TOKEN) String token) {
+        return memberService.getMemberRuleSettingByToken(token);
+    }
     @PostMapping("/tokenCheck")
     public Boolean tokenCheck(){
         return memberService.tokenCheck();

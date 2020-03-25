@@ -47,6 +47,12 @@ public class RepastFallBackFactory implements FallbackFactory<IRepastService> {
                 System.out.println("熔断积分获取方法");
                 return null;
             }
+
+            @Override
+            public Map getMemberRuleSettingByToken(String token) {
+                return null;
+            }
+
             @Override
             public List<Coupon> getAllCoupon() {
                 System.out.println("熔断查询优惠券方法");
@@ -108,7 +114,7 @@ public class RepastFallBackFactory implements FallbackFactory<IRepastService> {
             }
 
             @Override
-            public ResultData deleteOrder(Long id) {
+            public Boolean deleteOrder(Long id) {
                 return null;
             }
 

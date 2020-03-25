@@ -18,4 +18,7 @@ public interface MemberMapper extends Mapper<Member> {
     List<Map> getIntegrationByToken(String token);
     @Update("update ums_member set token = null where token = #{token}")
     Integer doLoginOut(String token);
+    @Select("select * from ums_member a RIGHT JOIN ums_member_rule_setting b " +
+            "ON a.id=b.member_id where a.token = #{token}")
+    Map getMemberRuleSettingByToken(String token);
 }

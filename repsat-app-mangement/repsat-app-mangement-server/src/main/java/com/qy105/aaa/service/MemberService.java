@@ -123,4 +123,22 @@ public class MemberService extends BaseService<Member> {
         }
         return list;
     }
+    /**
+     * create by: ws
+     * description: TODO 查询用户积分规则操作
+     * create time: 17:55 2020/3/14
+     * * @Param: token
+     * @return
+     */
+    public Map getMemberRuleSettingByToken(String token) {
+        Map map = null;
+        if (null != token) {
+            try {
+                map = memberMapper.getMemberRuleSettingByToken(token);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return map;
+    }
 }
