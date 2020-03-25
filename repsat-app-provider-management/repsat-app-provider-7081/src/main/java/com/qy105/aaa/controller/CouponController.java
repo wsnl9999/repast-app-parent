@@ -4,10 +4,12 @@ import com.qy105.aaa.model.Coupon;
 import com.qy105.aaa.model.Member;
 import com.qy105.aaa.scheduledservice.ScheduledService;
 import com.qy105.aaa.service.CouponService;
+import com.qy105.aaa.service.CouponUserService;
 import com.qy105.aaa.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -24,6 +26,8 @@ public class CouponController {
     private CouponService couponService;
     @Autowired
     private MemberService memberService;
+    @Autowired
+    private CouponUserService couponUserService;
     /**
      * create by: ws
      * description: TODO
@@ -66,8 +70,22 @@ public class CouponController {
     }
     @Autowired
     private ScheduledService scheduledService;
+    /**
+     * create by: ws
+     * description: TODO
+     * 测试定时器执行优惠券过期
+     * create time: 23:04 2020/3/24
+     * * @Param: null
+     * @return
+     */
     @PostMapping("/Test")
     public void test(){
         scheduledService.checkCouponStatus();
+    }
+    @PostMapping("/useCoupon")
+    int useCoupon(@RequestParam("couponId") Object couponId){
+        int i = (int) couponId;
+        String openId = memberService.getMember().getOpenId();
+        return couponUserService.useCoupon(i,openId);
     }
 }

@@ -37,6 +37,8 @@ public class OrderService extends BaseService<OmsOrder> {
     private CouponService couponService;
     @Autowired
     private OmsOrderItemService omsOrderItemService;
+    @Autowired
+    private CouponUserService couponUserService;
     @Override
     public Mapper<OmsOrder> getMapper() {
         return omsOrderMapper;
@@ -117,6 +119,11 @@ public class OrderService extends BaseService<OmsOrder> {
                     omsOrderItem.setOrderId(idByOrderSn);
                     omsOrderItem.setProductId(productId);
                     omsOrderItemService.getMapper().insert(omsOrderItem);
+                    //修改购物车状态
+                    //修改优惠券状态
+                    Member member = memberService.getMapper().selectByPrimaryKey(omsCartItem1.getMemberId());
+                    int i1 = couponUserService.useCoupon(couponId, member.getOpenId());
+
                 }
                 return boo;
             }

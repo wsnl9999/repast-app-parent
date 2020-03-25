@@ -5,6 +5,7 @@ import com.qy105.aaa.mapper.CouponUserMapper;
 import com.qy105.aaa.model.CouponUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import tk.mybatis.mapper.common.Mapper;
 
 /**
@@ -24,5 +25,16 @@ public class CouponUserService extends BaseService<CouponUser> {
 
     public Integer addCoupon(CouponUser couponUser){
         return getMapper().insert(couponUser);
+    }
+/*
+    @Transactional
+*/
+    public int useCoupon(int couponId,String openId){
+        CouponUser couponUser = couponUserMapper.getCouponUserByCouponIdAndOpenId(couponId, openId);
+        couponUser.setStatus(1);
+        int i = couponUserMapper.updateByPrimaryKey(couponUser);
+
+        return i;
+
     }
 }
