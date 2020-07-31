@@ -66,6 +66,7 @@
         <dependency>
             <groupId>com.esotericsoftware</groupId>
             <artifactId>reflectasm</artifactId>
+            <version>1.11.9</version>
         </dependency>
 
     </dependencies>

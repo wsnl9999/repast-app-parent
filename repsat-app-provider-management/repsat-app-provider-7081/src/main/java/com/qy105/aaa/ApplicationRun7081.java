@@ -5,7 +5,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.scheduling.annotation.EnableScheduling;
-import org.springframework.transaction.annotation.EnableTransactionManagement;
 import tk.mybatis.spring.annotation.MapperScan;
 
 /**
@@ -22,8 +21,8 @@ import tk.mybatis.spring.annotation.MapperScan;
 /*
 @EnableTransactionManagement
 */
-public class Application7081 {
+public class ApplicationRun7081 {
     public static void main(String[] args) {
-        SpringApplication.run(Application7081.class,args);
+        SpringApplication.run(ApplicationRun7081.class,args);
     }
 }

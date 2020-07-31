@@ -14,8 +14,8 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 @SpringBootApplication
 @EnableDiscoveryClient
 @EnableFeignClients(basePackages = {"com.qy105.aaa"})
-public class Application6081 {
+public class ApplicationRun6081 {
     public static void main(String[] args) {
-        SpringApplication.run(Application6081.class,args);
+        SpringApplication.run(ApplicationRun6081.class,args);
     }
 }
